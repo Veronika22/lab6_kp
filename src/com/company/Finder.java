@@ -40,5 +40,23 @@ public class Finder {
         return countryNames.toArray(new String[countryNames.size()]);
     }
 
+    public String getDescription(String name) {
+        String str = null;
+        String result = "";
+        try
+        {
+            BufferedReader in = new BufferedReader(new FileReader(mPath+"/"+name));
+            while ((str = in.readLine()) != null)
+            {
+                result += str;
+            }
+            in.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
 }
 
