@@ -26,7 +26,19 @@ public class Finder {
         return false;
     }
 
+    public String[] makeCountryList(String searchWord) {
+        File folder = new File(mPath);
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<String> countryNames = new ArrayList<String>(listOfFiles.length);
 
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile() &&
+                    isMatchPattern(listOfFiles[i].getName().toLowerCase(), searchWord.toLowerCase())) {
+                countryNames.add(listOfFiles[i].getName());
+            }
+        }
+        return countryNames.toArray(new String[countryNames.size()]);
+    }
 
 }
 
